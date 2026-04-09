@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Input;
 using AppRpgEtec.ViewModels;
 using AppRpgEtec.Views.Usuarios;
+using AppRpgEtec.Views.Personagens;
 
 namespace AppRpgEtec.ViewModels.Usuarios
 {
@@ -78,7 +79,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
 
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
 
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new ListagemView();
                 }
                 else
                 {
@@ -98,6 +99,11 @@ namespace AppRpgEtec.ViewModels.Usuarios
         {
             try
             {
+                if(string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Senha))
+                {
+                    throw new Exception("Usuário ou Senha nao pode ser Vazio");
+                }
+
                 Usuario u = new Usuario();
                 u.Username = Login;
                 u.PasswordString = Senha;
@@ -106,6 +112,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
 
                 if(uRegistrado.Id != 0)
                 {
+                  
                     string mensagem = $"Usuario Id {uRegistrado.Id} registrado com sucesso.";
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
 
