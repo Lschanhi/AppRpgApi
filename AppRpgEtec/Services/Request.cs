@@ -76,6 +76,25 @@ namespace AppRpgEtec.Services
             TResult result = await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialized));
             return result;
         }
+       /* public async Task<TResult> GetAsync<TResult>(string uri, string token)
+        {
+            HttpClient httpClient = new HttpClient();
+
+            if (!string.IsNullOrWhiteSpace(token))
+            {
+                httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+            }
+
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            string serialized = await response.Content.ReadAsStringAsync();
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                throw new Exception(serialized);
+
+            TResult result = await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialized));
+            return result;
+        }*/
 
         // Método Delete
         public async Task<int> DeleteAsync(string uri, string token)

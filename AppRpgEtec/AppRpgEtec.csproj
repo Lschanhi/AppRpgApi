@@ -63,6 +63,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Armas\ListagemArmaView.xaml.cs">
+	    <DependentUpon>ListagemArmaView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Armas\ListagemArmaView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Personagens\ListagemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -9,10 +9,10 @@ public partial class ListagemView : ContentPage
 	public ListagemView()
 	{
 		InitializeComponent();
-
+		
 		viewModel = new ListagemPersonagemViewModel();
 		BindingContext = viewModel;
 		Title = "Personagens - App Rpg Etec";
-	
+		
 	}
 }
