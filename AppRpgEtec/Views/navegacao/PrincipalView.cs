@@ -1,4 +1,5 @@
-﻿using AppRpgEtec.Views.Armas;
+﻿using AppRpgEtec.ViewModels.Personagens;
+using AppRpgEtec.Views.Armas;
 using AppRpgEtec.Views.Personagens;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace AppRpgEtec.Views.navegacao
             {
                 Title = "Armas"
             });
+
         }
     }
 }
