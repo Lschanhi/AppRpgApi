@@ -12,10 +12,21 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                    <MenuItem Text="Remover" IsDestructive="True"
+                                          Command="{Binding Path=BindingContext.RemoverPersonagemCommand, 
+                                        Source={x:Reference listView}}"
+
+                                          CommandParameter ="{Binding .}">
+                                    
+                                    </MenuItem>
+                               
+                            </ViewCell.ContextActions>
                             <StackLayout Padding="10">
                                 <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
-                                <Label Text="{Binding PontosVida}" FontSize="14"/>
+                                <Label Text="{Binding PontosVida}" FontSize="14"/> 
                             </StackLayout>
+                               
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
