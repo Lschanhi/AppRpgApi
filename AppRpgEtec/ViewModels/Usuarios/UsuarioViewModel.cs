@@ -7,6 +7,7 @@ using System.Windows.Input;
 using AppRpgEtec.ViewModels;
 using AppRpgEtec.Views.Usuarios;
 using AppRpgEtec.Views.Personagens;
+using AppRpgEtec.Views.navegacao;
 
 namespace AppRpgEtec.ViewModels.Usuarios
 {
@@ -79,8 +80,9 @@ namespace AppRpgEtec.ViewModels.Usuarios
 
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
 
-                    Application.Current.MainPage = new Views.navegacao.PrincipalView();
-                   
+                    Application.Current.MainPage = new MainFlyoutPage();
+                    
+
                 }
                 else
                 {
@@ -132,7 +134,9 @@ namespace AppRpgEtec.ViewModels.Usuarios
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new CadastroView());
+                var flyout = Application.Current.MainPage as FlyoutPage;
+
+                await flyout.Detail.Navigation.PushAsync(new CadastroView());
             }
             catch (Exception ex)
             {
