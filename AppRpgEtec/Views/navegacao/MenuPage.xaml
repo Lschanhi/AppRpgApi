@@ -26,6 +26,9 @@
 
         <Button Text="Disputas"
                 Clicked="Disputas_Clicked"/>
+        
+        <Button Text="Mapa"
+                Clicked="Mapa_Clicked"/>
 
         <Button Text="Sair"
                 Clicked="Sair_Clicked"/>

@@ -57,6 +57,15 @@ public partial class MenuPage : ContentPage
         flyout.IsPresented = false;
     }
 
+    private void Mapa_Clicked(object sender, EventArgs e)
+    {
+        var flyout = Application.Current.MainPage as MainFlyoutPage;
+
+        flyout.Detail = new NavigationPage(new Usuarios.LocalizacaoView());
+
+        flyout.IsPresented = false;
+    }
+
     private void Sair_Clicked(object sender, EventArgs e)
     {
         Application.Current.MainPage =
