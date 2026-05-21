@@ -7,6 +7,7 @@ using System.Windows.Input;
 using AppRpgEtec.ViewModels;
 using AppRpgEtec.Views.Usuarios;
 using AppRpgEtec.Views.Personagens;
+using AppRpgEtec.Views.navegacao;
 
 namespace AppRpgEtec.ViewModels.Usuarios
 {
@@ -57,6 +58,9 @@ namespace AppRpgEtec.ViewModels.Usuarios
             }
         }
         #region
+
+        private CancellationTokenSource _cancelTokenSoucer;
+        private bool _isCheckingLocation;
         public async Task AutenticarUsuario()
         {
             try
@@ -77,10 +81,32 @@ namespace AppRpgEtec.ViewModels.Usuarios
                     Preferences.Set("UsuarioPerfil", uAutenticado.Perfil);
                     Preferences.Set("UsuarioToken", uAutenticado.Token);
 
+                    _isCheckingLocation = true;
+                    _cancelTokenSoucer = new CancellationTokenSource();
+                    GeolocationRequest request = new GeolocationRequest(
+                        GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10)
+                        );
+
+                    Location location = await Geolocation.Default.GetLocationAsync
+                        (   
+                            request, _cancelTokenSoucer.Token
+                        );
+
+                    Usuario uLoc = new Usuario();
+                    uLoc.Id=uAutenticado.Id;
+                    uLoc.Latitude = location.Latitude;
+                    uLoc.Longitude = location.Longitude;
+
+                    UsuarioService uServiceLoc = new UsuarioService(uAutenticado.Token);
+                    await uServiceLoc.PutAtualizarLocalizacaoAsync(uLoc);
+
+                    //Fim da coleta da Geolocalização atual para atualização na api
+
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
 
-                    Application.Current.MainPage = new Views.navegacao.PrincipalView();
-                   
+                    Application.Current.MainPage = new MainFlyoutPage();
+                    
+
                 }
                 else
                 {
@@ -132,7 +158,9 @@ namespace AppRpgEtec.ViewModels.Usuarios
         {
             try
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new CadastroView());
+                var flyout = Application.Current.MainPage as FlyoutPage;
+
+                await flyout.Detail.Navigation.PushAsync(new CadastroView());
             }
             catch (Exception ex)
             {

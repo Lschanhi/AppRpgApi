@@ -7,23 +7,21 @@ using System.Text;
 
 namespace AppRpgEtec.Views.navegacao
 {
-    public class PrincipalView : TabbedPage
+   public class PrincipalView : TabbedPage
     {
-
         public PrincipalView()
         {
             Title = "App RPG Etec";
 
-            Children.Add(new NavigationPage(new ListagemView())
+            Children.Add(new ListagemView()
             {
                 Title = "Personagens"
             });
 
-            Children.Add(new NavigationPage(new ListagemArmaView())
+            Children.Add(new ListagemArmaView()
             {
                 Title = "Armas"
             });
-
-        }
-    }
+        
+    }}
 }

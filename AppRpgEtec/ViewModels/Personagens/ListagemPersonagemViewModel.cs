@@ -31,13 +31,17 @@ namespace AppRpgEtec.ViewModels.Personagens
         public ICommand NovoPersonagemCommand {  get; }
 
         public ICommand RemoverPersonagemCommand { get; set; }
-        public Personagem PersonagemSelecionado {
-            get { return PersonagemSelecionado; }
-            set {
+        public Personagem PersonagemSelecionado
+        {
+            get { return personagemSelecionado; }
+            set
+            {
                 if (value != null)
                 {
                     personagemSelecionado = value;
-                    Shell.Current.GoToAsync($"cadPersonagemView?pId={personagemSelecionado.Id}");
+                    OnPropertyChanged();
+
+                    _ = ExibirCadastroPersonagem();
                 }
             }
         }
@@ -87,12 +91,38 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }*/
 
+        /* public async Task ExibirCadastroPersonagem()
+         {
+             try
+             {
+                 if (Application.Current?.MainPage is TabbedPage tabbedPage
+                     && tabbedPage.CurrentPage is NavigationPage navPage)
+                 {
+                     await navPage.PushAsync(new CadastroPersonagemView());
+                 }
+                 else
+                 {
+                     await Application.Current.MainPage.DisplayAlert(
+                         "Ops",
+                         "Não foi possível abrir a tela de cadastro.",
+                         "Ok");
+                 }
+             }
+             catch (Exception ex)
+             {
+                 await Application.Current.MainPage.DisplayAlert(
+                     "Ops",
+                     ex.Message + " Detalhes: " + ex.InnerException,
+                     "Ok");
+             }
+         }*/
+
         public async Task ExibirCadastroPersonagem()
         {
             try
             {
-                if (Application.Current?.MainPage is TabbedPage tabbedPage
-                    && tabbedPage.CurrentPage is NavigationPage navPage)
+                if (Application.Current?.MainPage is FlyoutPage flyout
+                    && flyout.Detail is NavigationPage navPage)
                 {
                     await navPage.PushAsync(new CadastroPersonagemView());
                 }
