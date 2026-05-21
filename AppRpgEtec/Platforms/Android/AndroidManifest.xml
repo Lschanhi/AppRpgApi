@@ -4,7 +4,7 @@
 				 android:icon="@mipmap/appicon" 
 				 android:supportsRtl="true">
 		<meta-data	android:name="com.google.android.geo.API_KEY"
-					android:value="CHAVE_DA_SUA_API_GOOGLE_MAPS"></meta-data>
+					android:value="AIzaSyDxyUJLUdI8DmHXCQm0QNYtNsmOq_D4EhA"></meta-data>
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />

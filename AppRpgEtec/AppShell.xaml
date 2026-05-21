@@ -34,22 +34,29 @@
 
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems"
                 >
-        <ShellContent Title="Home" Icon="home.svg" ContentTemplate="{DataTemplate viewsNavegacao:PrincipalView}" Route="MainPage"/>
+        <ShellContent Title="Home" Icon="home.svg" ContentTemplate="{DataTemplate 
+            viewsNavegacao:PrincipalView}" Route="MainPage"/>
 
-        <ShellContent Title="Usuários" Icon="menuusuarios.svg" ContentTemplate="{DataTemplate viewsUsuarios:ListagemView}" Route="Usuarios"/>
+        <ShellContent Title="Usuários" Icon="menuusuarios.svg" ContentTemplate="{DataTemplate
+            viewsUsuarios:ListagemView}" Route="Usuarios"/>
 
-        <ShellContent Title="Disputas" Icon="menudisputas.svg" ContentTemplate="{DataTemplate viewsDisputas:ListagemView}" Route="Disputas"/>
+        <ShellContent Title="Disputas" Icon="menudisputas.svg" ContentTemplate="{DataTemplate 
+            viewsDisputas:ListagemView}" Route="Disputas"/>
 
-        <ShellContent Title="Personagens" Icon="menupersonagens.svg" ContentTemplate="{DataTemplate viewsPersonagens:ListagemView}" Route="Personagens"/>
+        <ShellContent Title="Personagens" Icon="menupersonagens.svg" ContentTemplate="{DataTemplate 
+            viewsPersonagens:ListagemView}" Route="Personagens"/>
 
         <Tab Title="Info" Route="Info" Icon="info.svg">
-            <ShellContent Title="Sobre" Route="sobre" ContentTemplate="{DataTemplate local:AboutView}"/>
-            <ShellContent Title="Descrição" Route="desc" ContentTemplate="{DataTemplate local:DescriptionView}"/>
+            <ShellContent Title="Sobre" Route="sobre" ContentTemplate="{DataTemplate 
+                local:AboutView}"/>
+            <ShellContent Title="Descrição" Route="desc" ContentTemplate="{DataTemplate 
+                local:DescriptionView}"/>
 
         </Tab>
     </FlyoutItem>
 
-    <ShellContent Title="Sair" Icon="Exit.png" ContentTemplate="{DataTemplate viewsUsuarios:LoginView}"
+    <ShellContent Title="Sair" Icon="Exit.png" ContentTemplate="{DataTemplate 
+                    viewsUsuarios:LoginView}"
                   Shell.FlyoutBehavior="Disabled"/>
 
     <Shell.FlyoutFooter>
