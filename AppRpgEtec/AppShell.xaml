@@ -6,6 +6,7 @@
     xmlns:viewsPersonagens ="clr-namespace:AppRpgEtec.Views.Personagens"
     xmlns:viewsDisputas ="clr-namespace:AppRpgEtec.Views.Disputas"
     xmlns:viewsArmas="clr-namespace:AppRpgEtec.Views.Armas"
+	xmlns:viewsNavegacao="clr-namespace:AppRpgEtec.Views.navegacao"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppRpgEtec"
     Title="AppRpgEtec">

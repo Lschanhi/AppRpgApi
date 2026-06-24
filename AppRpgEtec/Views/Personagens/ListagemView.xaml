@@ -1,36 +1,82 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:AppRpgEtec.Converters"
              x:Class="AppRpgEtec.Views.Personagens.ListagemView"
              Title="ListagemView">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Novo" Command="{Binding NovoPersonagemCommand}" />
-    </ContentPage.ToolbarItems>
-    <ScrollView>
-        <VerticalStackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand">
-            <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Personagens}" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                    <MenuItem Text="Remover" IsDestructive="True"
-                                          Command="{Binding Path=BindingContext.RemoverPersonagemCommand, 
-                                        Source={x:Reference listView}}"
 
-                                          CommandParameter ="{Binding .}">
-                                    
-                                    </MenuItem>
-                               
-                            </ViewCell.ContextActions>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Nome}" FontSize="18" FontAttributes="Bold"/>
-                                <Label Text="{Binding PontosVida}" FontSize="14"/> 
-                            </StackLayout>
-                               
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </VerticalStackLayout>
-    </ScrollView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:PontosVidaConverter x:Key="ColorConvert" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo"
+                     Command="{Binding NovoPersonagemCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Button Text="Zerar Ranking Geral"
+                Command="{Binding ZerarRankingRestaurarVidasGeralCommand}"
+                FontAttributes="Bold" />
+
+        <ListView x:Name="listView"
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding Personagens}"
+                  SelectedItem="{Binding PersonagemSelecionado}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Remover"
+                                      IsDestructive="True"
+                                      Command="{Binding Path=BindingContext.RemoverPersonagemCommand, Source={x:Reference listView}}"
+                                      CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+
+                        <Grid Padding="15"
+                              ColumnSpacing="10">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <BoxView Grid.Row="0"
+                                     Grid.RowSpan="2"
+                                     Grid.Column="0"
+                                     HeightRequest="50"
+                                     WidthRequest="20"
+                                     Color="{Binding PontosVida, Converter={StaticResource ColorConvert}}" />
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding Nome}"
+                                   FontSize="18"
+                                   FontAttributes="Bold" />
+
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding PontosVida}"
+                                   FontSize="14" />
+
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </VerticalStackLayout>
+
 </ContentPage>
