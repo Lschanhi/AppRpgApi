@@ -56,7 +56,7 @@
         </Tab>
     </FlyoutItem>
 
-    <ShellContent Title="Sair" Icon="Exit.png" ContentTemplate="{DataTemplate 
+    <ShellContent Title="Sair" Icon="exit.svg" ContentTemplate="{DataTemplate 
                     viewsUsuarios:LoginView}"
                   Shell.FlyoutBehavior="Disabled"/>
 

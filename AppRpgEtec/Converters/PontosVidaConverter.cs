@@ -11,7 +11,7 @@ namespace AppRpgEtec.Converters
         {
             ColorTypeConverter converter = new ColorTypeConverter();
 
-            int pontosVida = value == null ? 0 : Convert.ToInt32(value);
+            int pontosVida = value == null ? 0 : System.Convert.ToInt32(value);
 
             if (pontosVida == 100)
                 return (Color)converter.ConvertFromInvariantString("SeaGreen");
